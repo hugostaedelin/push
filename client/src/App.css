@@ -1,0 +1,32 @@
+body {
+  background-image: linear-gradient(to right, #004995 , #009EE2);
+  color: white;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.border-w {
+  border: white 5px solid;
+}
+
+.bg-t {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #f5f5f5;
+}

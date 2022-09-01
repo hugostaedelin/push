@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  pwa-client:
+    container_name: pwa-client
+    build:
+      context: client
+      dockerfile: Dockerfile
+      target: dev
+    restart: always
+    ports:
+      - ${REACT_PORT}:${DEFAULT_PORT}
+  pwa-server:
+    container_name: pwa-server
+    build:
+      context: server
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - ${NODE_PORT}:${DEFAULT_PORT}
+    env_file:
+      - .env
+  pwa-lt:
+    image: efrecon/localtunnel
+    restart: on-failure
+    command:
+      --local-host pwa-client --port 4001
+    links:
+      - pwa-client
+    depends_on:
+      - pwa-client
+#  pwa-db:
+#    container_name: pwa-db
+#    image: postgres
+#    restart: always
+#    volumes:
+#      - pwadb:/var/lib/postgresql/data
+#    env_file:
+#      - .env
